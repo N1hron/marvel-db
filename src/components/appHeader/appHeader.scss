@@ -1,0 +1,52 @@
+@import '../../style/variables';
+
+.app {
+    &__header {
+        height: 37px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        a, span, li, ul {
+            font-weight: 700;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 28px;
+
+        span {
+            color: $secondary-color;
+        }
+    }
+
+    &__navigation {
+        font-size: 24px;
+
+        ul {
+            display: flex;
+            width: 201px;
+            height: 32px;
+            justify-content: space-around;
+            list-style: none;
+            margin: 0;
+
+            a {
+                transition: all 0.15s;
+                text-decoration: none;
+
+                &:hover, &:focus {
+                    display: block;
+                    color: $secondary-color;
+                }
+            }
+            
+            a.active {
+                display: inline;
+                color: $secondary-color;
+                // text-decoration: underline;
+            }
+        }
+    }
+}

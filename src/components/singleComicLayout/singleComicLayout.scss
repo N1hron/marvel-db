@@ -1,0 +1,57 @@
+.single-comic {
+    position: relative;
+    margin-top: 50px;
+    min-height: 450px;
+    display: flex;
+    justify-content: space-between;
+
+    &__info {
+        display: flex;
+    }
+
+    &__img {
+        height: 450px;
+        max-width: 293px;
+    }
+
+    &__text {
+        margin-left: 50px;
+        width: 550px;
+
+        &-title {
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        &-description, &-pages, &-language {
+            font-weight: 400;
+            font-size: 18px;
+            margin-top: 25px;
+        }
+
+        &-price {
+            font-weight: 700;
+            font-size: 24px;
+            color: #9F0013;
+            margin-top: 25px;
+        }
+    }
+
+    &__back {
+        transition: all 0.15s;
+        font-weight: 700;
+        font-size: 18px;
+
+        &:hover, &:focus {
+            color: #9f0013;
+            display: block;
+        }
+    }
+}
+
+.spinner, .error {
+    position: absolute;
+    margin: 115px auto 0;
+    left: 0;
+    right: 0;
+}

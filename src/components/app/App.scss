@@ -1,0 +1,50 @@
+@import '../../style/fonts';
+@import '../../style/variables';
+@import '../../style/buttons';
+@import '../../style/animations';
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    min-width: 1440px;
+}
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    color: $main-color;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 45px;
+}
+
+main {
+    margin-top: 50px;
+}
+
+.characters {
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.background-img {
+    position: absolute;
+    bottom: 0px;
+    right: -174px;
+    z-index: -1;
+}

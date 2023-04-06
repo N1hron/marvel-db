@@ -1,0 +1,23 @@
+.banner {
+    background-color: #232222;
+    height: 100px;
+    display: flex;
+    
+    &__text {
+        align-self: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 24px;
+        margin-left: 280px; 
+    }
+
+    &__bg-img {
+        position: absolute;
+        left: 45px;
+    }
+
+    &__logo {
+        position: absolute;
+        right: 25px;
+    }
+}

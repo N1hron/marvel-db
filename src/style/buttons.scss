@@ -1,0 +1,87 @@
+@import './variables';
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+    position: relative;
+    width: 101px;
+    min-width: 101px;
+    height: 38px;
+    background-color: #5C5C5C;;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 11px 0;
+    box-sizing: border-box;
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all 0.15s;
+
+    &_red {
+        background-color: $secondary-color;
+    }
+
+    &::before {
+        border-color: #fff transparent;
+        border-style: solid;
+        border-width: 0 0 10px 10px;
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0px;
+        transition: none;
+        transform: rotate(180deg);
+    }
+    &::after {
+        border-color: #fff transparent;
+        border-style: solid;
+        border-width: 0 0 10px 10px;
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        transition: none;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+    }
+
+    // &:disabled {
+    //     opacity: 0.5;
+    // }
+}
+
+.about {
+    &__btns {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 84px;
+
+        button {
+            margin: 0;
+        }
+    }
+}
+
+.cards {
+    button {
+        width: 170px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 45px auto 0;
+    }
+}
+
+.background-img {
+    position: absolute;
+    right: -174px;
+    bottom: 0px;
+}

@@ -1,0 +1,54 @@
+.catalog {
+    &__container {
+        position: relative;
+        margin-top: 45px;
+        display: grid;
+        grid-template-columns: repeat(4, 225px);
+        column-gap: 67px;
+        row-gap: 55px;
+        min-height: 370px;
+    }
+
+    .spinner, .error {
+        position: absolute;
+        margin: 70px auto 0;
+        left: 0;
+        right: 0;
+    }
+
+    button {
+        margin: 45px auto 5px;
+    }
+
+    &__product {
+        list-style: none;
+        cursor: pointer;
+        transition: all 0.15s;
+
+        &-image {
+            width: 225px;
+            height: 346px;
+            transition: all 0.15s;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        &:hover, &:focus {
+            position: relative;
+            transform: translateY(-4px);
+        }
+
+        &-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        &-price {
+            font-weight: 700;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 9px;
+        }
+    }
+}

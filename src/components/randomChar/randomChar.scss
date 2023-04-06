@@ -1,0 +1,109 @@
+.random-info {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .25);
+
+    &__block, &__static {
+        position: relative;
+        width: 50%;
+        height: 250px;
+        box-sizing: border-box;
+
+        .spinner, .error {
+            position: absolute;
+            margin: 0 auto 0;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        padding: 35px 35px 35px 40px;
+    }
+
+    &__image {
+        width: 180px;
+        height: 180px;
+        display: flex;
+
+        img {
+            max-width: 180px;
+            max-height: 180px;
+            object-fit: contain;
+            align-self: center;
+        }
+    }
+
+    &__static {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        img {
+            position: absolute;
+            right: -35.54px;
+            bottom: 14px;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__info {
+        width: 265px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__btns {
+        position: absolute;
+        display: flex;
+        bottom: 35px;
+    }
+
+    &__name {
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 22px;
+    }
+
+    &__description {
+        margin-top: 10px;
+        font-size: 14px;
+        max-height: 103px;
+        overflow: hidden;
+    }
+
+    &__static {
+        padding: 35px 136px 35px 40px;
+        background-color: #232222;
+
+        &-text {
+            font-size: 24px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 13px;
+    
+            p {
+                font-weight: 700;
+                color: #FFFFFF;
+            }
+
+        }
+
+        .button {
+            &::before, &::after {
+                border-color: #232222 transparent;
+            }
+        }
+    }
+}
