@@ -4,6 +4,7 @@ import useMarvelServices from '../../services/MarvelServices';
 import SingleCharLayout from '../singleCharLayout/SingleCharLayout';
 import SingleComicLayout from '../singleComicLayout/SingleComicLayout';
 import setContent from '../../utils/setContent';
+import { CSSTransition } from 'react-transition-group';
 
 export default function Info({type}) {
     const [data, setData] = useState(null);
@@ -38,8 +39,8 @@ export default function Info({type}) {
     }
     
     return (
-        <>
+        <CSSTransition in={process === 'confirmed'} appear={true} timeout={300} classNames="appear">
             {setContent(process, () => renderData(), data)}
-        </>
+        </CSSTransition>
     )
 }

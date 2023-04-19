@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import ReactLoading from 'react-loading';
 import setListContent from '../../utils/setListContent';
 import useMarvelServices from '../../services/MarvelServices';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './charList.scss';
+import '../../style/animations.scss';
 
-function CharList(props) {
+function CharList({onCharSelected}) {
     const [characters, setCharacters] = useState([]),
           [offset, setOffset] = useState(210),
           [initialLoading, setInitialLoading] = useState(true),
           [charsEnded, setCharsEnded] = useState(false);
-    
+
     const {getCharacters, process, setProcess} = useMarvelServices();
 
     const cardsRefs = useRef([]);
@@ -57,24 +59,26 @@ function CharList(props) {
         return characters.map((character, i) => {
             const {name, thumbnail, id} = character;
             return (
-                <li className="cards__card"
-                    ref={element => cardsRefs.current[i] = element}
-                    tabIndex={0}  
-                    onClick={() => {
-                        props.onCharSelected(id);
-                        setFocus(i);
-                    }}
-                    onKeyDown={(event) => {
-                        if (event.key.match(/Enter/)) {
-                            event.preventDefault();
-                            props.onCharSelected(id);
+                <CSSTransition nodeRef={cardsRefs.current[i]} key={id} in={process === 'confirmed'} appear={true} timeout={300} classNames="appear">
+                    <li className="cards__card"
+                        ref={element => cardsRefs.current[i] = element}
+                        tabIndex={0}  
+                        onClick={() => {
+                            onCharSelected(id);
                             setFocus(i);
-                        }
-                    }}>
-                    
-                    <img src={thumbnail} alt={name} className="card__img"/>
-                    <p className="card__name">{name}</p>
-                </li>
+                        }}
+                        onKeyDown={(event) => {
+                            if (event.key.match(/Enter/)) {
+                                event.preventDefault();
+                                onCharSelected(id);
+                                setFocus(i);
+                            }
+                        }}>
+                        
+                        <img src={thumbnail} alt={name} className="card__img"/>
+                        <p className="card__name">{name}</p>
+                    </li>
+                </CSSTransition>
             )
                    
         })
@@ -89,16 +93,16 @@ function CharList(props) {
             });
         }
     }, [process])
-
+    
     const content = useMemo(() => {
-        return setListContent(process, () => renderCharacters(characters), initialLoading)
+        return setListContent(process, () => renderCharacters(characters), initialLoading);
     }, [process])
-                     
+    
     return (
         <div className="cards">
-            <ul className="cards__container">
+            <TransitionGroup className="cards__container" component="ul">
                 {content}
-            </ul>
+            </TransitionGroup>
             {initialLoading || process === 'error' ? null :
             <button 
                 className="button button_red" 

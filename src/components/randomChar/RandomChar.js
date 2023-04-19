@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useMarvelServices from '../../services/MarvelServices';
 import ReactLoading from 'react-loading';
@@ -10,7 +10,7 @@ import hammer from '../../resources/img/hammer-and-shield.png'
 
 function RandomChar() {
     const [character, setCharacter] = useState({});
-
+    const nodeRef = useRef(null);
     const {getCharacterById, process, setProcess} = useMarvelServices();
 
     useEffect(() => {
@@ -21,15 +21,21 @@ function RandomChar() {
         const id = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
         getCharacterById(id).then(character => setCharacter(character)).then(() => setProcess('confirmed'));
     }
+
+    const charElement = useMemo(() => {
+        return (
+            <div ref={nodeRef} className="random-info__block">
+                {setContent(process, View, character)}
+            </div>
+        )
+    }, [process])
                
     return (
         <section className="random-info">
-            <CSSTransition in={process === 'confirmed'} timeout={300} classNames="appear">
-                <div className="random-info__block">
-                    {setContent(process, View, character)}
-                </div>
+            <CSSTransition nodeRef={nodeRef} in={process === 'confirmed'} appear={true} timeout={300} classNames="appear">
+                {charElement}
             </CSSTransition>
-            
+     
             <div className="random-info__static">
                 <div className="random-info__static-text">
                     <p>

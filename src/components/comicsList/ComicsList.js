@@ -1,10 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import useMarvelServices from '../../services/MarvelServices';
 import setListContent from '../../utils/setListContent';
 import ReactLoading from 'react-loading';
 
 import './comicsList.scss';
+import '../../style/animations.scss';
 
 export default function ComicsList() {
     const [comics, setComics] = useState([]),
@@ -31,14 +33,15 @@ export default function ComicsList() {
 
     function renderComics(comics) {
         return comics.map((comic, i) => (
-            <Link key={i} tabIndex={0}
-                to={`/comics/${comic.id}`}>
-                    <img src={comic.thumbnail} alt={comic.title} className="catalog__product-image"/>
-                    <div>
-                        <p className="catalog__product-title">{comic.title}</p>
-                        <p className="catalog__product-price">{comic.price ? comic.price + '$' : 'NOT AVAILABLE'}</p>
-                    </div>
-            </Link>
+            <CSSTransition key={i} in={process === 'confirmed'} appear={true} timeout={300} classNames="appear">
+                <Link tabIndex={0} to={`/comics/${comic.id}`}>
+                        <img src={comic.thumbnail} alt={comic.title} className="catalog__product-image"/>
+                        <div>
+                            <p className="catalog__product-title">{comic.title}</p>
+                            <p className="catalog__product-price">{comic.price ? comic.price + '$' : 'NOT AVAILABLE'}</p>
+                        </div>
+                </Link>
+            </CSSTransition>
         ))
     }
 

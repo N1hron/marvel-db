@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group'; 
 import PropTypes from 'prop-types';
 import Skeleton from '../skeleton/Skeleton';
@@ -25,7 +25,7 @@ function setContent(process, Component, data) {
 
 function CharInfo(props) {
     const [character, setCharacter] = useState(null);
-          
+    const nodeRef = useRef(null);
     const {getCharacterById, process, setProcess} = useMarvelServices();
 
     useEffect(() => {
@@ -48,8 +48,8 @@ function CharInfo(props) {
         return (
             <div className="about">
                 <div className="about__content">
-                        <CSSTransition in={process === 'confirmed'} timeout={300} classNames="appear">
-                            <div className="about__container">
+                        <CSSTransition nodeRef={nodeRef} in={process === 'confirmed'} timeout={300} classNames="appear">
+                            <div ref={nodeRef} className="about__container">
                                 {setContent(process, View, character)}
                             </div>
                         </CSSTransition>
