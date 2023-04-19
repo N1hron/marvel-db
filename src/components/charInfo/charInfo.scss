@@ -16,6 +16,7 @@
         background-color: #fff;
         display: flex;
         flex-direction: column;
+        min-height: 284px;
         max-height: 70vh;
 
         .spinner, .error {
