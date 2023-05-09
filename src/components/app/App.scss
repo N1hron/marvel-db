@@ -3,6 +3,10 @@
 @import '../../style/buttons';
 @import '../../style/animations';
 
+#root {
+    width: 100vw;
+}
+
 html {
     overflow-y: scroll;
 }
